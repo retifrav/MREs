@@ -1,2 +1,3 @@
-# stackoverflow
-Examples, demonstration, samples for questions on Stack Overflow
+# Stack Overflow
+
+Examples, demonstration, samples for questions on Stack Overflow.
