@@ -1,3 +1,3 @@
-# Stack Overflow
+# MREs
 
-Examples, demonstration, samples for questions on Stack Overflow.
+Minimal reproducible examples (MREs), samples, demonstrations, etc.
