@@ -1,0 +1,6 @@
+name = "decovar"
+min_version = "0.80.0"
+
+[author]
+    name = "retif"
+    homepage = "http://decovar.dev"

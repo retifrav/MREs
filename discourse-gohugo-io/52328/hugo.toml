@@ -1,0 +1,16 @@
+baseURL = "/"
+
+languageCode = "en-us"
+title = "Example"
+
+theme = "decovar"
+
+[params]
+    description = "An example website"
+
+[permalinks]
+    posts = "/posts/:year/:month/:day/:filename/"
+
+[params.render_hooks.link]
+    errorLevel = "warning"
+    highlightBroken = true

@@ -1,0 +1,118 @@
+ul.posts-list {
+    margin: 0;
+}
+ul.posts-list-tags {
+    padding-left: $left-padding-on-page;
+}
+ul > li > a {
+    text-decoration: none;
+}
+
+.pages-list {
+    margin-top: 20px;
+    padding-left: 30px;
+}
+.pages-list .pages-list {
+    padding-left: 40px;
+}
+
+.posts-list-item,
+.applications-list-item {
+    list-style: none;
+}
+.applications-list-item {
+    margin-top: 20px;
+}
+.applications-list-item-header {
+    margin-top: 30px;
+}
+.applications-list-item:first-of-type {
+    margin-top: 0;
+}
+
+li.posts-list-item {
+    padding: 40px 0;
+    border-bottom: 1px dashed gray;
+}
+li.posts-list-item-tags {
+    padding: 15px 0;
+}
+li.posts-list-item:first-child {
+    padding-top: 0;
+}
+// li.posts-list-item:last-child {
+//     border-bottom: none;
+// }
+li.posts-list-item > p:nth-last-child(2) {
+    margin-bottom: 0;
+}
+li.posts-list-item > p:last-child {
+    display: none;
+    padding: 0;
+}
+.posts-list {
+    padding: 0;
+}
+.posts-list-item {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    padding: 0.4em 0;
+}
+.posts-list-item-description {
+    display: block;
+    font-size: 0.8em;
+}
+
+a.link-readmore {
+    display: inline-block;
+    padding: 10px 12px;
+    color: #555;
+    text-decoration: none;
+    background-color: #EBEBEB;
+}
+a.link-readmore:hover {
+    background: #ddd;
+}
+
+#pagination {
+    margin: 10px 0 0;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.page-item {
+    display: inline-block;
+
+    .page-link {
+        display: block;
+        padding: 0 0.6em;
+    }
+}
+
+.posts-list-item-tags a.tag {
+    color: $color-dimmed;
+}
+
+ul.tags-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+ul.tags-list.tags-list-horizontal,
+ul.tags-list.tags-list-news {
+    display: inline-flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+}
+ul.tags-list.tags-list-news {
+    margin-bottom: 35px;
+}
+
+// --- tablet layout
+
+@media only screen and (max-width: $tablet-width)
+{
+    ul.tags-list.tags-list-horizontal {
+        justify-content: center;
+    }
+}

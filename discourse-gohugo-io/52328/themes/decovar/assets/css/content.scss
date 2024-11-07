@@ -1,0 +1,284 @@
+h1 { font-size: 1.5em; }
+h2 { font-size: 1.3em; }
+h3 { font-size: 1.2em; }
+h4 { font-size: 1.15em; }
+h5 { font-size: 1.1em; }
+h6 { font-size: 1.05em; }
+
+h1, h2, h3, h4, h5, h6,
+.post-title {
+    line-height: 1.2;
+}
+.post-title {
+    margin: 0;
+    color: $color-dimmed;
+}
+h1.list-page-header {
+    margin: 0 0 30px;
+}
+h1.list-page-header,
+h1.post-title {
+    font-size: 1.75em;
+}
+h2.post-title {
+    font-size: 1.5em;
+}
+h2.post-title > a {
+    text-decoration: none;
+}
+
+a.page-link {
+    font-size: 4em;
+    text-decoration: none;
+}
+
+// article {
+//     margin-bottom: 30px;
+// }
+
+ul.breadcrumbs {
+    list-style: none;
+    overflow: hidden;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+ul.breadcrumbs > li {
+    float: left;
+    margin-left: 5px;
+}
+li.breadcrumb.active {
+    font-weight: bold;
+}
+hr.breadcrumbs {
+    margin: 12px 0 0;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+}
+
+div.list-medium > ul > li {
+    margin-top: 3px;
+}
+
+table.metadata {
+    margin: 15px 0;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    font-family: 'Courier New', Courier, monospace;
+}
+table.metadata th,
+table.metadata td {
+    padding: 5px 7px;
+    vertical-align: top;
+}
+table.metadata th {
+    text-align: right;
+}
+
+h1 { margin: 30px 0 25px; }
+h2 { margin: 25px 0 20px; }
+h3 { margin: 20px 0 15px; }
+h4, h5, h6 { margin: 15px 0; }
+
+p {
+    margin: 15px 0;
+}
+
+.post-meta,
+.posts-list-item-description {
+    margin-top: 10px;
+}
+
+code {
+    padding: 2px 7px;
+    font-size: 120%;
+    color: #333;
+    background-color: #ebebeb;
+    border-radius: 0.25rem;
+    line-height: initial;
+    word-wrap: break-word;
+}
+// div.highlight {
+//     box-sizing: border-box;
+// }
+pre {
+    overflow: auto;
+}
+div.highlight > pre > code,
+div.highlight > div > table code
+{
+    padding: unset;
+    color: lime;
+    background-color: unset;
+    border-radius: unset;
+    line-height: 1.5;
+}
+div.highlight > pre {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #282C34 !important;
+}
+
+#TableOfContents ul {
+    margin: 0;
+}
+#TableOfContents a {
+    text-decoration: none;
+    color: $color-primary;
+}
+
+#tags {
+    margin: 0 0 15px;
+    display: flex;
+    align-items: center;
+}
+#tags > i.bi-hash {
+    font-size: 1.5em;
+    color: $color-primary;
+}
+#tags > a {
+    margin-left: 0.5em;
+}
+#tags > a:first-of-type {
+    margin-left: 0.3em;
+}
+
+div.post-content {
+    margin-top: 1em;
+}
+
+video.video {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+p.video-fallback {
+    text-align: center;
+    font-size: 80%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+span.video-notes {
+    display: block;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 80%;
+}
+
+.review-score {
+  text-align: center;
+  font-size: 400%;
+  font-weight: bold;
+}
+
+img.nobox {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+figure {
+    margin: 20px 0;
+}
+figure > footer {
+    margin-top: 8px;
+    line-height: 1.0;
+    font-size: 0.8em;
+    text-align: center;
+    color: $color-dimmed;
+}
+figure.with-original > footer {
+    text-align: right;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.updates-divider {
+    width: 30%;
+    margin: 30px auto;
+}
+hr.updates-separator {
+    margin-top: 30px;
+    border-style: inset;
+    color: $color-gray;
+}
+
+.table-desc {
+  float: right;
+  margin-left: 15px;
+}
+.table-desc td {
+    padding: 5px;
+}
+.td-head {
+  text-align: right;
+  font-weight: bold;
+}
+
+.image-post {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+blockquote {
+  font-style: italic;
+  padding-left: 10px;
+  border-left: 3px solid gray;
+}
+
+nav#TableOfContents {
+    margin: 16px 0;
+}
+
+.unsolved {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    border: 1px #f5c6cb solid;
+    border-radius: 5px;
+}
+
+.project-description {
+    font-size: 0.8em;
+}
+
+.footnotes > ol > li {
+    font-size: 0.8em;
+    font-style: italic;
+    color: $color-dimmed;
+}
+.footnotes > ol > li > p {
+    margin: 0;
+}
+
+details {
+    border: 0.5px solid black;
+    border-radius: 0.25em;
+}
+details > summary {
+    padding: 5px 10px;
+    cursor: pointer;
+    font-style: italic;
+}
+details > div.highlight > pre {
+    margin: 0;
+}
+
+a.page-anchor {
+    color: inherit;
+}
+
+div.vertical-image-centered-scaled {
+    margin: 0 auto;
+    max-width: 60%;
+}

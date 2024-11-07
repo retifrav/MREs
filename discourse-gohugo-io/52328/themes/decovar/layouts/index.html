@@ -1,0 +1,21 @@
+{{ define "main" }}
+    <ul class="posts-list">
+      {{ range $i, $p := (.Paginate (where .Site.RegularPages "Section" "==" "posts")).Pages }}
+        <li class="posts-list-item">
+          <h2 class="post-title"><a class="posts-list-item-title" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+          <span class="posts-list-item-description">
+            <i class="bi-calendar"></i> {{ .PublishDate.Format "2006-01-02" }}
+            |
+            <i class="bi-clock"></i> {{ .ReadingTime }} min read
+          </span>
+          {{ if in .RawContent "<!--more-->" }}
+            <p>{{ .Summary }}</p>
+            <a class="link-readmore" href="{{ .RelPermalink }}">Read more</a>
+          {{ else }}
+            <p>{{ .Content }}</p>
+          {{ end }}
+        </li>
+      {{ end }}
+    </ul>
+    {{ partial "pagination.html" $ }}
+{{ end }}

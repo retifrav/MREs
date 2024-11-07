@@ -1,14 +1,17 @@
 import pandas
+import typing
+from typing import Optional
+
 
 def some() -> None:
-    # someTable = pandas.DataFrame(
-    #     {
-    #         "a": pandas.Series(dtype="float"),
-    #         "b": pandas.Series(dtype="float"),
-    #         "c": pandas.Series(dtype="str"),
-    #     }
-    # )
-    someTable: pandas.DataFrame = pandas.DataFrame()
+    someTable = pandas.DataFrame(
+        {
+            "a": pandas.Series(dtype="float"),
+            "b": pandas.Series(dtype="float"),
+            "c": pandas.Series(dtype="str"),
+        }
+    )
+    #someTable: pandas.DataFrame = pandas.DataFrame()
 
     for x in [1,2]:
         some = []
@@ -27,8 +30,10 @@ def some() -> None:
     #print(someTable)
 
     for index, row in someTable.iterrows():
-        #reveal_type(index)
+        # reveal_type(index)
         print(type(index))
+        index = typing.cast(int, index)
         print(index + 1)
+
 
 some()

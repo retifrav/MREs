@@ -1,0 +1,51 @@
+$hamburger-padding-x: 0;
+$hamburger-padding-y: 0;
+$hamburger-layer-width: 30px;
+$hamburger-layer-height: 3px;
+
+@import "hamburgers/hamburgers.scss";
+
+#header > #hamburger {
+    display: none;
+}
+#navigation-mobile {
+    background-color: #f1f1f1;
+    border-bottom: 1px solid $color-gray;
+}
+#hamburger {
+    margin-left: 10px;
+}
+
+#navigation-desktop {
+    display: flex;
+    align-items: center;
+}
+#navigation-desktop,
+#navigation-mobile {
+    font-size: 1.2em;
+}
+#navigation-desktop > * {
+    margin: 0 10px;
+}
+#navigation-desktop > *:first-child {
+    margin-left: 0;
+}
+#navigation-desktop > *:last-child {
+    margin-right: 0;
+}
+#navigation-mobile {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 10px;
+}
+#navigation-mobile > * {
+    margin: 10px;
+}
+
+#homeTitle {
+    margin: 0;
+    color: $color-header;
+    font-size: 2em;
+    line-height: 1.1;
+}

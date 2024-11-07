@@ -1,0 +1,12 @@
+<div id="sidebar">
+    <div id="sidebars">
+        <div class="sidebar-section">
+            <h3>Tags</h3>
+            <ul class="tags-list tags-list-horizontal">
+                {{ range $.Site.Taxonomies.tags.ByCount }}
+                <li><a href="/tags/{{ .Name }}">#{{ .Name }}&nbsp;({{ .Count }})</a></li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</div>

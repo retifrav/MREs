@@ -1,0 +1,255 @@
+$tablet-width: 900px;
+$phone-width: 500px;
+
+$color-primary: #1E8449;
+$color-service: #1B3F5C;
+$color-header: #d2d2d2;
+$color-gray: #ccc;
+$color-dimmed: #4c4c4c;
+$font-primary: "Verdana", "Geneva", sans-serif;
+$left-padding-on-page: 30px;
+
+html {
+    height: 100%;
+    //box-sizing: border-box;
+}
+// *, *:before, *:after {
+//     box-sizing: inherit;
+// }
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: $font-primary;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 1280px;
+    background-color: #dddbdb;
+    box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.5);
+    clip-path: inset(0px -4px 0px -4px);
+}
+
+@import "bootstrap-icons.scss";
+
+h1, h2, h3, h4, h5, h6,
+#footer {
+    color: $color-dimmed;
+}
+a {
+    color: $color-primary;
+    text-decoration: none;
+}
+a.broken {
+    padding: 2px 6px;
+    color: darkred;
+    border: 3px solid red;
+    border-radius: 0.25rem;
+    background: #fee;
+}
+a.broken:hover:after {
+    content: " (broken link)";
+}
+
+#header {
+    padding: 20px 30px;
+}
+#header {
+    color: $color-header;
+    background-color: #333;
+    border-bottom: 1px solid $color-gray;
+}
+
+#main {
+    flex: 1;
+    display: flex;
+    padding: 0;
+    // padding: $blocks-vertical-padding ($blocks-horizontal-padding + 20);
+}
+#header, #footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#footer {
+    font-size: 0.75em;
+    //border-top: 1px solid $color-gray;
+}
+#header a,
+nav a,
+#footer a {
+    text-decoration: none;
+}
+#header a {
+    color: $color-header;
+}
+nav a {
+    color: $color-dimmed;
+}
+#footer a {
+    color: $color-dimmed;
+}
+
+@import "header.scss";
+
+#main-container {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0; // otherwise pre inside flexbox takes all the width it wants
+    padding: 30px 30px 10px;
+    background-color: #fff;
+    border-right: 1px solid $color-gray;
+    //z-index: 1;
+}
+
+.http-status {
+    margin: auto;
+    text-align: center;
+    color: $color-service;
+}
+.http-status > h1 {
+    margin: 30px 0 15px;
+}
+.http-status > p {
+    margin: 10px 0;
+}
+.http-status > img {
+    max-width: 500px;
+    border: 1px solid $color-service;
+    box-shadow: 0 0 2em $color-service;
+}
+
+@import "sidebar.scss";
+@import "listing.scss";
+
+p:first-of-type {
+    margin-top: 0;
+}
+
+.app-header-avatar {
+    max-width: 100%;
+}
+
+.post-meta {
+    font-size: 0.8em;
+}
+
+.icon {
+    display: block-inline;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+}
+
+table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+.table th,
+.table td {
+    border: 1px solid black;
+    padding: 5px 10px;
+    text-align: center;
+}
+.borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
+    border: none;
+}
+table th {
+    background: #f1f1f1;
+}
+table.table > tbody th > a {
+    color: black;
+}
+table.table > tbody th > a {
+    text-decoration: underline dotted;
+}
+
+table.top th,
+table.top td {
+    border-width: 0.5px;
+}
+th[class^=top-] {
+    font-size: 120%;
+}
+th.top-best,
+th.top-shit {
+    font-size: 150%;
+}
+th.top-best {
+    color: green;
+}
+th.top-shit {
+    color: red;
+}
+
+.cool-input {
+    display: block;
+    height: 22px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.cool-input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+/* hovered photos
+.cider-name {
+    cursor: help;
+}
+.cider-name div {
+    position: relative;
+    text-decoration: underline dotted;
+}
+.cider-name div img {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    height: 500px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, .3);
+}
+.cider-name div:hover img {
+    display: block;
+}
+*/
+.cider-name > a {
+    color: initial;
+    text-decoration: underline dotted;
+}
+
+.bugreport-status {
+    font-weight: bold;
+}
+.bugreport-status-not-fixed {
+    color: red;
+}
+.bugreport-status-fixed {
+    color: green;
+}
+
+.tooltip {
+    text-decoration: underline dotted;
+    cursor: help;
+}
+
+@import "content.scss";
+@import "top.scss";
+@import "comments.scss";
+@import "main-tablet.scss";
+@import "main-phone.scss";

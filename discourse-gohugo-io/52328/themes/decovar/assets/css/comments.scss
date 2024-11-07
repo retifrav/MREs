@@ -1,0 +1,145 @@
+.comments-divider {
+    width: 100%;
+    margin: 0;
+}
+
+#comments-subscription-note {
+    padding: 6px 8px;
+    border: 1px solid #ffe167;
+    background-color: #fff2c0;
+    border-radius: .25em;
+    font-size: 0.7em;
+    margin-bottom: 15px;
+    font-style: italic;
+ }
+
+#comments {
+    margin: 20px 0;
+}
+
+.gh-comment {
+  border: 1px solid #d1d5da;
+  margin-top: 15px;
+}
+
+.gh-header {
+  display: flex;
+  color: #586069;
+  background-color: #f6f8fa;
+  border-bottom: 1px solid #d1d5da;
+  padding: 10px;
+  font-size: 85%;
+}
+
+.gh-username {
+  color: #586069;
+}
+
+.gh-body {
+  padding: 10px 15px;
+  background: #fcfcfc;
+  line-height: 1.3;
+  font-size: 90%;
+}
+
+.gh-body h1,
+.gh-body h2,
+.gh-body h3,
+.gh-body h4,
+.gh-body h5,
+.gh-body h6 {
+  color: #24292e;
+}
+.gh-body h1,
+.gh-body h2 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #eaecef;
+}
+
+.gh-body code {
+    padding: 4px 8px;
+    font-size: 120%;
+    word-wrap: break-word;
+}
+.gh-body pre > code {
+    font-size: 140%;
+}
+.gh-body > div.highlight > pre,
+.gh-body pre > code {
+    color: lime;
+    font-size: 120%;
+    background-color: #282C34;
+}
+.gh-body pre,
+.gh-body > div.highlight > pre {
+    padding: 10px;
+    background: #282C34;
+    border-radius: 5px;
+}
+
+.gh-comment p {
+  margin: 0px 0px 10px 0px;
+}
+.gh-comment p:last-child {
+  margin: 0;
+}
+
+.gh-header > img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.gh-comment .email-hidden-toggle,
+.gh-comment .email-hidden-reply {
+    display: none;
+}
+
+// --- remark42
+
+div.remark42__last-comments {
+    //margin: 30px 0 20px;
+
+    article.comment {
+        display: block;
+        width: max-content;
+        max-width: 100%;
+        padding: 0;
+        margin: 0 0 20px;
+
+        div.comment__body {
+            padding: 15px;
+            background-color: #fffef0;
+            border: 1px solid #f2e367;
+            border-radius: 0.75em;
+            font-family: $font-primary;
+
+            .comment__title {
+                margin-bottom: 5px;
+                color: $color-primary;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+            .comment__title > a {
+                color: inherit;
+            }
+
+            .comment__info::after {
+                content: ": ";
+            }
+
+            .comment__text {
+                font-style: italic;
+            }
+        }
+    }
+    article.comment:last-of-type {
+        margin-bottom: 0;
+    }
+}
+// there is a bug, apparently, because if a comment has <code> in its first lines,
+// then the comment block in the feed of last comments will get another div.remark42__last-comments
+// div.comment__text.raw-content > div.remark42__last-comments {
+//     margin: 0;
+// }

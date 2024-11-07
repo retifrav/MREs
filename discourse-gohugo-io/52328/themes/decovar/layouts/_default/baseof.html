@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+        <link rel="canonical" href="{{ .RelPermalink | absURL }}">
+
+        <meta name="generator" content="Hugo {{ hugo.Version }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {{- partial "favicon" . -}}
+
+        <meta name="author" content="{{ .Site.Params.author }}">
+        <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ .Title }}{{ end }}{{ end }}">
+
+        {{ $style := resources.Get "/css/main.scss" | resources.ExecuteAsTemplate "/css/main.scss" . | css.Sass | resources.Minify | resources.Fingerprint -}}
+        <link rel="stylesheet" href="{{ $style.Permalink }}">
+
+        {{- block "AddToHead" .}}{{- end }}
+    </head>
+    <body>
+        {{- partial "header.html" . -}}
+
+        <main id="main" aria-role="main">
+            <div id="main-container">
+                <div style="margin-bottom:20px;">
+                    {{- block "main" . }}{{- end }}
+                </div>
+                <footer id="footer">
+                    <div>
+                        2014 - {{ dateFormat "2006" now }}
+                    </div>
+                    <div>CC BY-SA 4.0 / GPLv3</div>
+                </footer>
+            </div>
+            {{- partial "sidebar.html" . -}}
+        </main>
+
+        <script>
+            const navigationMobile = document.getElementById("navigation-mobile");
+            const hamburgerOpenClassName = "is-active";
+
+            function toggleHamburger(hamburger)
+            {
+                if (hamburger.classList.contains(hamburgerOpenClassName))
+                {
+                    hamburger.classList.remove(hamburgerOpenClassName);
+                    //homeTitle.style.display = "block";
+                    navigationMobile.style.display = "none";
+                }
+                else
+                {
+                    hamburger.classList.add(hamburgerOpenClassName);
+                    //homeTitle.style.display = "none";
+                    navigationMobile.style.display = "flex";
+                }
+            }
+        </script>
+
+        {{- block "AddToBottom" .}}{{- end }}
+    </body>
+</html>

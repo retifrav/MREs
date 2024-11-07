@@ -1,0 +1,12 @@
+{{ define "main" }}
+    <article class="post">
+        <h1 class="list-page-header">{{ .Title }}</h1>
+        <ul class="pages-list">
+            {{ range $index, $element := (.Pages.ByTitle).ByParam "numberInList" }}
+                <li class="applications-list-item">
+                    <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                </li>
+            {{ end }}
+        </ul>
+    </article>
+{{ end }}

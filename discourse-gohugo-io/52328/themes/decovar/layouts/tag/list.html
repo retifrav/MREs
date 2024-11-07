@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <article>
+    <h1 class="list-page-header">Tag: #{{ .Title }}</h1>
+    <ul class="posts-list posts-list-tags">
+      {{ range $index, $element := .Pages }}
+        <li class="posts-list-item posts-list-item-tags">
+          <h2 class="post-title" style="font-size:large;"><a class="posts-list-item-title" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+          <span class="posts-list-item-description">
+            <i class="bi-calendar"></i> {{ .PublishDate.Format "2006-01-02" }}
+            |
+            <i class="bi-clock"></i> {{ .ReadingTime }} min read
+          </span>
+        </li>
+      {{ end }}
+    </ul>
+  </article>
+{{ end }}

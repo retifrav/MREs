@@ -1,0 +1,33 @@
+{{ define "main" }}
+    <article class="post">
+      <div>
+        <h1 class="post-title">{{ .Title }}</h1>
+        <div class="post-meta">
+          <div title="Published at">
+              <span><i class="bi-calendar"></i></span>
+              {{ .PublishDate.Format "2006-01-02 15:04:05 -0700" }}
+          </div>
+          {{ with .GitInfo }}
+          <div title="Last modified at">
+              <span><i class="bi-pencil"></i></span>
+              {{ .AuthorDate.Format "2006-01-02 15:04:05 -0700" }}
+          </div>
+          {{ end }}
+          <div><i class="bi-clock"></i> {{ .ReadingTime }} min read</div>
+        </div>
+      </div>
+      <div class="post-content">
+        {{ .Content }}
+      </div>
+    </article>
+    {{- with .Params.tags -}}
+        <div id="tags">
+        <i class="bi-hash"></i>
+        {{ range . -}}
+            {{- with $.Site.GetPage (printf "/%s/%s" "tags" . ) -}}
+                <a class="tag" href="{{ .Permalink }}">{{ .Data.Term }}</a>
+            {{- end -}}
+        {{- end -}}
+        </div>
+    {{- end -}}
+{{ end }}

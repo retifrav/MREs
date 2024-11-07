@@ -1,0 +1,38 @@
+@media only screen and (max-width: $phone-width)
+{
+    #header {
+        padding: 20px 15px;
+    }
+
+    #main-container {
+        padding: 15px 15px 10px;
+    }
+
+    #footer {
+        flex-direction: column;
+        text-align: center;
+    }
+    .app-header-avatar {
+        max-width: 70%;
+    }
+    // #blog-title {
+    //     font-size: 150%;
+    // }
+    // h2.post-title {
+    //   font-size: 125%;
+    // }
+
+    div.vertical-image-centered-scaled {
+        margin: 0 auto;
+        max-width: unset;
+    }
+
+    /* --- listing.scss --- */
+
+    .pages-list {
+        padding-left: 0px;
+    }
+    .pages-list .pages-list {
+        padding-left: 10px;
+    }
+}

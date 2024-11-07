@@ -1,0 +1,65 @@
+$sidebar-width: 300px;
+
+#sidebar {
+    flex: 1;
+    //flex-grow: 1;
+    min-width: $sidebar-width;
+    //max-width: $sidebar-width;
+    padding: 20px;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+#sidebar,
+#sidebar a,
+#sidebar h3 {
+    color: $color-dimmed;
+}
+#sidebar h3 {
+    margin-bottom: 15px;
+}
+
+.sidebar-section {
+    margin-top: 20px;
+    text-align: left;
+}
+.sidebar-section:first-child {
+    margin-top: 0;
+}
+.sidebar-section > h3:first-child {
+    margin-top: 0;
+}
+
+ul.sidebar-list {
+    padding: 0 0 0 10px;
+    margin: 0 0 0 10px;
+}
+
+#search-query {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 14px;
+    font-size: 1em;
+}
+#search-results {
+    margin-top: 20px;
+    text-align: left;
+}
+div[id^=search-summary-] {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+div[id^=search-summary-] > h4 {
+    margin: 0;
+}
+div[id^=search-summary-] > p {
+    margin: 5px 0;
+}
+
+#telegram {
+    max-width: $sidebar-width;
+}
+iframe[id^="telegram-post"],
+body.body_widget_post {
+    min-width: auto !important;
+}

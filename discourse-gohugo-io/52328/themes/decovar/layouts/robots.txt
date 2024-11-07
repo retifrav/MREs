@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /js/
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+Sitemap: {{ .Site.BaseURL }}sitemap.xml
