@@ -32,8 +32,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
         dpndnc::some
 )
 
-# ---
-
 include(GNUInstallDirs)
 
 install(TARGETS ${PROJECT_NAME})
