@@ -1,0 +1,99 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired":
+    {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets":
+    [
+        {
+            "name": "default",
+            "hidden": true,
+            "displayName": "Default",
+            "description": "Default configuration with all the options set to their default values",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/install/${presetName}",
+            "generator": "Ninja",
+            "cacheVariables":
+            {
+                "CMAKE_BUILD_TYPE":
+                {
+                    "type": "STRING",
+                    "value": "Release"
+                }
+            }
+        },
+        {
+            "name": "not-using-package-manager",
+            "inherits": "default",
+            "displayName": "No package manager",
+            "description": "Not using package manager for resolving dependencies",
+            "cacheVariables":
+            {
+                "USING_PACKAGE_MANAGER":
+                {
+                    "type": "BOOL",
+                    "value": false
+                }
+            }
+        },
+        {
+            "name": "using-vcpkg-default",
+            "inherits": "default",
+            "displayName": "Using vcpkg | default triplet",
+            "description": "Resolving dependencies with vcpkg toolchain and auto-detected triplet",
+            "cacheVariables":
+            {
+                "CMAKE_TOOLCHAIN_FILE":
+                {
+                    "type": "FILEPATH",
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+                },
+                "VCPKG_APPLOCAL_DEPS":
+                {
+                    "type": "BOOL",
+                    "value": false
+                },
+                "USING_PACKAGE_MANAGER":
+                {
+                    "type": "BOOL",
+                    "value": true
+                }
+            }
+        },
+        {
+            "name": "using-vcpkg-windows-static",
+            "inherits": "using-vcpkg-default",
+            "displayName": "Using vcpkg | x64-windows-static-md",
+            "description": "Resolving dependencies with vcpkg toolchain and x64-windows-static-md triplet",
+            "cacheVariables":
+            {
+                "VCPKG_TARGET_TRIPLET":
+                {
+                    "type": "STRING",
+                    "value": "x64-windows-static-md"
+                }
+            }
+        }
+    ],
+    "buildPresets":
+    [
+        {
+            "name": "not-using-package-manager",
+            "configurePreset": "not-using-package-manager",
+            "targets": "install"
+        },
+        {
+            "name": "using-vcpkg-default",
+            "configurePreset": "using-vcpkg-default",
+            "targets": "install"
+        },
+        {
+            "name": "using-vcpkg-windows-static",
+            "configurePreset": "using-vcpkg-windows-static",
+            "targets": "install"
+        }
+    ]
+}
