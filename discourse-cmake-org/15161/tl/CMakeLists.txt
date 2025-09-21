@@ -34,4 +34,4 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 
 include(GNUInstallDirs)
 
-install(TARGETS ${PROJECT_NAME})
+install(TARGETS ${CMAKE_PROJECT_NAME})
