@@ -76,6 +76,20 @@
                     "value": "x64-windows-static-md"
                 }
             }
+        },
+        {
+            "name": "using-vcpkg-macos-dynamic",
+            "inherits": "using-vcpkg-default",
+            "displayName": "Using vcpkg | arm64-osx-dynamic",
+            "description": "Resolving dependencies with vcpkg toolchain and arm64-osx-dynamic triplet",
+            "cacheVariables":
+            {
+                "VCPKG_TARGET_TRIPLET":
+                {
+                    "type": "STRING",
+                    "value": "arm64-osx-dynamic"
+                }
+            }
         }
     ],
     "buildPresets":
@@ -93,6 +107,11 @@
         {
             "name": "using-vcpkg-windows-static",
             "configurePreset": "using-vcpkg-windows-static",
+            "targets": "install"
+        },
+        {
+            "name": "using-vcpkg-macos-dynamic",
+            "configurePreset": "using-vcpkg-macos-dynamic",
             "targets": "install"
         }
     ]
