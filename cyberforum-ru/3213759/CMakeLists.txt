@@ -7,7 +7,7 @@ project(
     LANGUAGES CXX
 )
 
-option(USING_PACKAGE_MANAGER "Using a proper package manager for resolving dependencies" YES)
+option(USING_PACKAGE_MANAGER "Using a proper package manager for resolving dependencies" NO)
 option(INSTALL_DEPENDENCIES_TOO "Installing vcpkg-resolved dependencies" NO)
 
 # global debug postfix for libraries (executables still need to set it)
