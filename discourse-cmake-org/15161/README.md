@@ -1,8 +1,8 @@
-## Several variants of a shared library with the same interface
+# Several variants of a shared library with the same interface
 
 <https://discourse.cmake.org/t/multiple-shared-libs-alternative-implementations-of-common-interface-minimal-cmake-c-example/15161/>
 
-### Building
+## Building
 
 Dependency (*one of the variants*):
 
@@ -30,7 +30,7 @@ $ cmake -G Ninja -DCMAKE_BUILD_TYPE=Release \
 $ cmake --build . --target install
 ```
 
-### Running
+## Running
 
 When dependency variant #1 was built and installed:
 

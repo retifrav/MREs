@@ -1,8 +1,8 @@
-## .NET project with NuGet references
+# .NET project with NuGet references
 
 <https://discourse.cmake.org/t/netstandard-compilation-with-cmake/11052>
 
-### Building and running
+## Building and running
 
 ``` cmd
 > mkdir build
