@@ -1,4 +1,9 @@
 #include <iostream>
+#include <sstream>
+
+#ifdef _WIN32
+    #include <windows.h>
+#endif
 
 // better involve glad or some other OpenGL loader
 #ifdef __APPLE__

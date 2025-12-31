@@ -93,3 +93,22 @@ include(GNUInstallDirs)
 install(TARGETS ${CMAKE_PROJECT_NAME}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+#
+# if SDL is built as a SHARED library (DLL), then you might want to automate its installation too,
+# but if it is a STATIC library, then TARGET_RUNTIME_DLLS is likely to be empty,
+# and so the following `add_custom_command()` will fail to execute
+#
+#if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+#    if(NOT EXISTS "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}")
+#        file(MAKE_DIRECTORY "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}")
+#    endif()
+#    add_custom_command(
+#        TARGET ${CMAKE_PROJECT_NAME}
+#        POST_BUILD
+#        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#            $<TARGET_RUNTIME_DLLS:${CMAKE_PROJECT_NAME}>
+#            ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}
+#        COMMAND_EXPAND_LISTS
+#        COMMENT "Copying runtime dependencies (DLLs)"
+#    )
+#endif()
