@@ -1,0 +1,8 @@
+{
+    "name": "sdl-example",
+    "version": "0",
+    "dependencies":
+    [
+        "sdl"
+    ]
+}
