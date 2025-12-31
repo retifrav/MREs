@@ -6,6 +6,19 @@ project(sdl-example
 
 option(USING_PACKAGE_MANAGER "Using a package manager for resolving dependencies" 0)
 
+set(REQUIRED_CPP_STANDARD 11 CACHE STRING "Required C++ standard")
+if(DEFINED CMAKE_CXX_STANDARD)
+    if(CMAKE_CXX_STANDARD LESS ${REQUIRED_CPP_STANDARD})
+        message(FATAL_ERROR "This project requires at least C++${REQUIRED_CPP_STANDARD}")
+    endif()
+else()
+    set(CMAKE_CXX_STANDARD ${REQUIRED_CPP_STANDARD})
+endif()
+set(CMAKE_CXX_STANDARD_REQUIRED YES)
+if(NOT DEFINED CMAKE_CXX_EXTENSIONS)
+    set(CMAKE_CXX_EXTENSIONS NO)
+endif()
+
 set(CMAKE_DEBUG_POSTFIX "d" CACHE STRING "Filename postfix for libraries under DEBUG configuration")
 
 set(sources
@@ -65,12 +78,15 @@ if(USING_PACKAGE_MANAGER)
     )
 endif()
 
+target_compile_features(${PROJECT_NAME}
+    PRIVATE
+        "cxx_std_${REQUIRED_CPP_STANDARD}"
+)
+
 set_target_properties(${CMAKE_PROJECT_NAME}
     PROPERTIES
         DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX}
 )
-
-set(VCPKG_FIXUP_MACHO_RPATH OFF)
 
 include(GNUInstallDirs)
 
