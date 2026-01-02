@@ -6,6 +6,18 @@ project(sdl-example
 
 option(USING_PACKAGE_MANAGER "Using a package manager for resolving dependencies" 0)
 
+if(
+    NOT USING_PACKAGE_MANAGER
+    AND
+    NOT DEFINED SDL2_DIR
+)
+    message(WARNING
+        "You have neither set to use a package manager with `USING_PACKAGE_MANAGER` "
+        "nor provided a value for `SDL2_DIR` to find a pre-built SDL package; "
+        "will fallback to finding SDL in the system environment (CMAKE_PREFIX_PATH)"
+    )
+endif()
+
 set(REQUIRED_CPP_STANDARD 11 CACHE STRING "Required C++ standard")
 if(DEFINED CMAKE_CXX_STANDARD)
     if(CMAKE_CXX_STANDARD LESS ${REQUIRED_CPP_STANDARD})
@@ -47,26 +59,35 @@ set(CMAKE_FIND_FRAMEWORK ${CMAKE_FIND_FRAMEWORK_BACKUP})
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     #find_package(Threads REQUIRED)
-    find_package(X11 REQUIRED)
+    #find_package(X11 REQUIRED)
 
     target_link_libraries(${CMAKE_PROJECT_NAME}
         PRIVATE
             #${CMAKE_THREAD_LIBS_INIT}
-            ${X11_LIBRARIES}
-            ${CMAKE_DL_LIBS}
+            ${OPENGL_opengl_LIBRARY}
+            #${X11_LIBRARIES}
+            #${CMAKE_DL_LIBS}
+    )
+else()
+    target_link_libraries(${CMAKE_PROJECT_NAME}
+        PRIVATE
+            ${OPENGL_gl_LIBRARY}
     )
 endif()
 
-# release packages from GitHub are lower-cased
-if(USING_PACKAGE_MANAGER)
-    find_package(SDL2 CONFIG REQUIRED)
-else()
-    find_package(sdl2 CONFIG REQUIRED)
+message(DEBUG "Looking for SDL2...")
+list(APPEND CMAKE_MESSAGE_INDENT "- ")
+# package name might have a different case (GitHub releases have it lower-cased),
+# but CMake will probe all the variants anyway, so there is no need to try both
+find_package(SDL2 CONFIG REQUIRED)
+if(SDL2_FOUND) # redundant check, because it was found with REQUIRED
+    message(DEBUG "Found SDL2 here: ${SDL2_DIR}")
+    message(DEBUG "SDL2 target(s): ${SDL2_LIBRARIES}")
 endif()
+list(POP_BACK CMAKE_MESSAGE_INDENT)
 
 target_link_libraries(${CMAKE_PROJECT_NAME}
     PRIVATE
-        ${OPENGL_gl_LIBRARY}
         SDL2::SDL2
         SDL2::SDL2main
 )
