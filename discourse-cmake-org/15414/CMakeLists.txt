@@ -7,6 +7,20 @@ project(sdl-example
 option(USING_PACKAGE_MANAGER "Using a package manager for resolving dependencies" 0)
 
 if(
+    USING_PACKAGE_MANAGER
+    AND
+    NOT DEFINED VCPKG_INSTALLED_DIR
+)
+    message(FATAL_ERROR
+        "You have set to use a package manager (`USING_PACKAGE_MANAGER`), "
+        "which is vcpkg in this case, but `VCPKG_INSTALLED_DIR` ended up not being set. "
+        "Maybe you forgot to provide the path to vcpkg toolchain with `CMAKE_TOOLCHAIN_FILE`? "
+        "If that's the case, remember that it is a cache variable (so you might need to clean "
+        "the build folder before trying to pass it with `-D`)."
+    )
+endif()
+
+if(
     NOT USING_PACKAGE_MANAGER
     AND
     NOT DEFINED SDL2_DIR
@@ -14,7 +28,7 @@ if(
     message(WARNING
         "You have neither set `USING_PACKAGE_MANAGER` to use a package manager "
         "nor have you provided a value for `SDL2_DIR` to find a pre-built/downloaded package, "
-        "so will fallback to finding SDL in the system environment (CMAKE_PREFIX_PATH)"
+        "so the configuration will fallback to finding SDL in the system environment (CMAKE_PREFIX_PATH)."
     )
 endif()
 
