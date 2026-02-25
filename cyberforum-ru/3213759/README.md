@@ -1,10 +1,17 @@
 ## Resolving png and zlib dependencies
 
-<https://cyberforum.ru/cpp-cross-platform/thread3213759.html>
+Original forum thread: <https://cyberforum.ru/cpp-cross-platform/thread3213759.html>
 
-### Building
+<!-- MarkdownTOC -->
 
-#### Without package manager
+- [Without package manager](#without-package-manager)
+- [Using a package manager](#using-a-package-manager)
+    - [vcpkg](#vcpkg)
+    - [Conan](#conan)
+
+<!-- /MarkdownTOC -->
+
+### Without package manager
 
 Using [FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html), so without a proper package manager:
 
@@ -19,7 +26,9 @@ $ ./some
 1025x289
 ```
 
-#### With vcpkg
+### Using a package manager
+
+#### vcpkg
 
 Using [vcpkg](https://vcpkg.io/) and building for Windows:
 
@@ -34,7 +43,7 @@ $ ./some.exe
 1025x289
 ```
 
-#### With Conan
+#### Conan
 
 Using [Conan](https://conan.io/) (*specifically, version 2.x*) and building for default/auto-detected Conan profile:
 
