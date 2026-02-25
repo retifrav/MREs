@@ -56,7 +56,7 @@
                     "type": "BOOL",
                     "value": false
                 },
-                "USING_PACKAGE_MANAGER":
+                "USING_PACKAGE_MANAGER_VCPKG":
                 {
                     "type": "BOOL",
                     "value": true
@@ -90,6 +90,25 @@
                     "value": "arm64-osx-dynamic"
                 }
             }
+        },
+        {
+            "name": "using-conan-default",
+            "inherits": "default",
+            "displayName": "Using Conan | default profile",
+            "description": "Resolving dependencies with Conan toolchain and auto-detected profile",
+            "cacheVariables":
+            {
+                "CMAKE_TOOLCHAIN_FILE":
+                {
+                    "type": "FILEPATH",
+                    "value": "${sourceDir}/build/${presetName}/conan_toolchain.cmake"
+                },
+                "USING_PACKAGE_MANAGER_CONAN":
+                {
+                    "type": "BOOL",
+                    "value": true
+                }
+            }
         }
     ],
     "buildPresets":
@@ -112,6 +131,11 @@
         {
             "name": "using-vcpkg-macos-dynamic",
             "configurePreset": "using-vcpkg-macos-dynamic",
+            "targets": "install"
+        },
+        {
+            "name": "using-conan-default",
+            "configurePreset": "using-conan-default",
             "targets": "install"
         }
     ]

@@ -1,4 +1,36 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.28)
+
+option(USING_PACKAGE_MANAGER "Using a package manager for resolving dependencies" 0)
+option(USING_PACKAGE_MANAGER_VCPKG "Package manager is vcpkg" 0)
+option(USING_PACKAGE_MANAGER_CONAN "Package manager is Conan" 0)
+option(INSTALL_VCPKG_RESOLVED_DEPENDENCIES_TOO "Installing vcpkg-resolved dependencies" 0)
+
+if(USING_PACKAGE_MANAGER_VCPKG OR USING_PACKAGE_MANAGER_CONAN)
+    set(USING_PACKAGE_MANAGER 1)
+endif()
+
+if(USING_PACKAGE_MANAGER_VCPKG AND USING_PACKAGE_MANAGER_CONAN)
+    message(FATAL_ERROR "You can't use both vcpkg and Conan at the same time, select one")
+endif()
+
+if(DEFINED CMAKE_TOOLCHAIN_FILE AND NOT EXISTS "${CMAKE_TOOLCHAIN_FILE}")
+    set(TOOLCHAIN_ERROR_COMMON_PART
+        "Could not locate the toolchain file, expected to find it here: ${CMAKE_TOOLCHAIN_FILE}"
+    )
+    if(USING_PACKAGE_MANAGER_VCPKG)
+        message(
+            FATAL_ERROR
+                "${TOOLCHAIN_ERROR_COMMON_PART}. Have you set the VCPKG_ROOT environment variable?"
+        )
+    elseif(USING_PACKAGE_MANAGER_CONAN)
+        message(
+            FATAL_ERROR
+                "${TOOLCHAIN_ERROR_COMMON_PART}. Have you run conan install with correct --output-folder?"
+        )
+    else()
+        message(FATAL_ERROR "${TOOLCHAIN_ERROR_COMMON_PART}")
+    endif()
+endif()
 
 project(
     "some"
@@ -6,9 +38,6 @@ project(
     VERSION 1.2.3
     LANGUAGES CXX
 )
-
-option(USING_PACKAGE_MANAGER "Using a proper package manager for resolving dependencies" NO)
-option(INSTALL_DEPENDENCIES_TOO "Installing vcpkg-resolved dependencies" NO)
 
 # global debug postfix for libraries (executables still need to set it)
 set(CMAKE_DEBUG_POSTFIX "d" CACHE STRING "Filename postfix for libraries under DEBUG configuration")
@@ -61,7 +90,7 @@ install(FILES
     resources/some.png
     DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
-if(USING_PACKAGE_MANAGER AND INSTALL_DEPENDENCIES_TOO)
+if(USING_PACKAGE_MANAGER AND INSTALL_VCPKG_RESOLVED_DEPENDENCIES_TOO)
     install(DIRECTORY "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/"
         DESTINATION ${CMAKE_INSTALL_PREFIX}
     )

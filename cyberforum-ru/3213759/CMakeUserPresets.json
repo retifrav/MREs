@@ -1,0 +1,4 @@
+{
+    "version": 10,
+    "$comment": "This is just so Conan could not generate its own here"
+}
